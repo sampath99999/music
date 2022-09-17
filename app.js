@@ -5,6 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var favicon = require('serve-favicon');
 const session = require('express-session');
+const database = require("./controllers/database");
+require('dotenv').config()
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -12,15 +14,15 @@ var songsrouter = require('./routes/songs');
 var adminrouter = require('./routes/admin');
 var moviesrouter = require('./routes/movies');
 
-
 var port = (process.env.PORT || '3000');
 var app = express();
-  app.listen(port,(err) => {
-    if(err)
+database.connect();
+app.listen(port, (err) => {
+  if (err)
     throw err
-    console.log("App Started!")
-  })
-app.use(session({secret: 'keyboard cat',cookie: {},resave: false,saveUninitialized: true,}))
+  console.log("App Started!")
+})
+app.use(session({ secret: 'keyboard cat', cookie: {}, resave: false, saveUninitialized: true, }))
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -36,15 +38,15 @@ app.use('/', indexRouter);
 app.use('/user', usersRouter);
 app.use('/song', songsrouter);
 app.use('/admin', adminrouter);
-app.use('/movies',moviesrouter);
+app.use('/movies', moviesrouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
