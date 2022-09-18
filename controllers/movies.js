@@ -65,7 +65,7 @@ module.exports.updateMovie = (movieId, movie, callback) => {
         }
         callback({
             status: "success",
-            data: movie
+            message: "Movie Updated!"
         })
     })
 }

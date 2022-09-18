@@ -29,10 +29,8 @@ module.exports.createArtist = (artistDetails, callback) => {
 //!SECTION create artist
 
 //SECTION Edit artist
-module.exports.editArtist = (artistDetails, callback) => {
-    const id = artistDetails._id;
-    delete artistDetails._id;
-    artistModel.updateOne({ _id: id }, artistDetails, (doc, err) => {
+module.exports.editArtist = (artistId, artistDetails, callback) => {
+    artistModel.updateOne({ _id: artistId }, artistDetails, (doc, err) => {
         if (err) {
             callback({
                 code: false,
