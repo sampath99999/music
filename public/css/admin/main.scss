@@ -1,2 +1,12 @@
 @import "colors";
 @import "fonts";
+
+@import "./pages/index";
+
+*
+{
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    outline: none;
+}

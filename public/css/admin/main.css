@@ -1,0 +1,96 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:300,500,700&display=swap");
+.index .centerDiv {
+  position: absolute;
+  width: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  box-shadow: -1px 10px 13px 0px #adadad;
+  border-radius: 20px; }
+  @media screen and (max-width: 480px) {
+    .index .centerDiv {
+      flex-direction: column;
+      width: 100%;
+      left: 0;
+      top: 0;
+      transform: translate(0, 0);
+      align-items: center;
+      margin-top: 50px; } }
+  @media screen and (min-width: 480px) and (max-width: 1024px) {
+    .index .centerDiv {
+      width: 100%; } }
+  .index .centerDiv .left {
+    padding: 100px 50px;
+    background-color: #ED4D6E;
+    border-radius: 20px;
+    width: 50%;
+    color: #ebebeb;
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+    @media screen and (max-width: 480px) {
+      .index .centerDiv .left {
+        width: 80%;
+        padding: 20px; } }
+    .index .centerDiv .left img {
+      width: 100px; }
+    .index .centerDiv .left .brand {
+      font-weight: bold;
+      font-size: 25px;
+      margin-bottom: 10px;
+      color: white; }
+    .index .centerDiv .left hr {
+      margin-bottom: 10px;
+      width: 50%;
+      color: white; }
+    .index .centerDiv .left .welcome {
+      color: white; }
+    .index .centerDiv .left .quote {
+      margin-top: 20px;
+      display: block;
+      color: #e0e0e0;
+      font-size: 14px;
+      text-align: center; }
+      .index .centerDiv .left .quote span {
+        font-weight: bold;
+        color: white; }
+  .index .centerDiv .right {
+    padding: 100px 50px;
+    width: 50%; }
+    @media screen and (max-width: 480px) {
+      .index .centerDiv .right {
+        width: 80%; } }
+    .index .centerDiv .right form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center; }
+      .index .centerDiv .right form p {
+        font-size: 10px;
+        color: gray;
+        margin-bottom: 15px; }
+      .index .centerDiv .right form input {
+        padding: 8px;
+        margin-bottom: 20px;
+        border: none;
+        border-bottom: solid 2px gray;
+        transition: all ease 0.3s;
+        width: 80%;
+        border-radius: 0; }
+        .index .centerDiv .right form input:hover, .index .centerDiv .right form input:focus {
+          border-bottom-color: #ED4D6E; }
+      .index .centerDiv .right form button {
+        padding: 10px 0px;
+        width: 60%;
+        background-color: #ED4D6E;
+        border-radius: 10px;
+        border: none;
+        color: white;
+        cursor: pointer; }
+
+* {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  outline: none; }

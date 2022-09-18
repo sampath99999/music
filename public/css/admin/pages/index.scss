@@ -1,0 +1,105 @@
+.index{
+    .centerDiv{
+        position: absolute;
+        width: 50%;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        box-shadow: -1px 10px 13px 0px rgba(173,173,173,1);
+        border-radius: 20px;
+        @media screen and (max-width: 480px) {
+            flex-direction: column;
+            width: 100%;
+            left: 0;
+            top: 0;
+            transform: translate(0, 0);
+            align-items: center;
+            margin-top: 50px;
+        }
+        @media screen and (min-width: 480px) and (max-width: 1024px) {
+            width: 100%;
+        }
+        .left{
+            padding: 100px 50px;
+            background-color: #ED4D6E;
+            border-radius: 20px;
+            width: 50%;
+            color: rgb(235, 235, 235);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            @media screen and (max-width: 480px) {
+                width: 80%;
+                padding: 20px;
+            }
+            img{
+                width: 100px;
+            }
+            .brand{
+                font-weight: bold;
+                font-size: 25px;
+                margin-bottom: 10px;
+                color: white;
+            }
+            hr{
+                margin-bottom: 10px;
+                width: 50%;
+                color: white;
+            }
+            .welcome{
+                color: white;
+            }
+            .quote{
+                margin-top: 20px;
+                display: block;
+                color: rgb(224, 224, 224);
+                font-size: 14px;
+                text-align: center;
+                span{
+                    font-weight: bold;
+                    color: white;
+                }
+            }
+        }
+        .right{
+            padding: 100px 50px;
+            width: 50%;
+            @media screen and (max-width: 480px) {
+                width: 80%;
+            }
+            form{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                p{
+                    font-size: 10px;
+                    color: gray;
+                    margin-bottom: 15px;
+                }
+                input{
+                    padding: 8px;
+                    margin-bottom: 20px;
+                    border: none;
+                    border-bottom: solid 2px gray;
+                    transition: all ease 0.3s;
+                    width: 80%;
+                    border-radius: 0;
+                    &:hover, &:focus {
+                        border-bottom-color: #ED4D6E;
+                    }
+                }
+                button{
+                    padding: 10px 0px;
+                    width: 60%;
+                    background-color: #ED4D6E;
+                    border-radius: 10px;
+                    border: none;
+                    color: white;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
