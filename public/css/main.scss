@@ -4,7 +4,6 @@
 @import "./pages/index.scss";
 @import "./pages/movie.scss";
 
-@import url('https://fonts.googleapis.com/css?family=Poppins:300,500,700&display=swap');
 *
 {
     font-family: 'Poppins', sans-serif;
@@ -82,15 +81,6 @@ body
             margin-bottom: 5px;
         }
     }
-    // .footer
-    // {
-    //     width: 100%;
-    //     position: absolute;
-    //     bottom: 0;
-    //     display: flex;
-    //     flex-direction: column;
-    //     align-items: center;
-    // }
     .queue
     {
         height: 60%;
