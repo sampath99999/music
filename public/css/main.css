@@ -1,19 +1,19 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:300,500,700&display=swap");
 h4 {
-  font-size: 22px;
-}
+  font-size: 22px; }
+
+h4 {
+  font-size: 22px; }
 
 * {
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
-  outline: none;
-}
+  outline: none; }
 
 body {
   background: black;
-  color: white;
-}
+  color: white; }
 
 .sidebar {
   max-width: 300px;
@@ -21,179 +21,97 @@ body {
   background: rgba(247, 247, 247, 0.048);
   position: fixed;
   height: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.sidebar .brand {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  padding-top: 20px;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  color: #FF5042;
-  font-weight: bold;
-  font-size: 20px;
-}
-
-.sidebar .brand img {
-  text-align: center;
-  width: 50px;
-  margin-bottom: 10px;
-}
-
-.sidebar hr {
-  width: 80%;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  border-color: gray;
-}
-
-.sidebar .account {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 80%;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin-bottom: 10px;
-}
-
-.sidebar .account a {
-  text-decoration: none;
-  color: white;
-  padding: 5px 10px;
-  border-radius: 50px;
-  text-align: center;
-  margin-bottom: 10px;
-  width: 80%;
-}
-
-.sidebar .account .login {
-  background-color: #FF2A66;
-}
-
-.sidebar .account .register {
-  background-color: #FF583B;
-}
-
-.sidebar .account .username {
-  margin-bottom: 5px;
-}
-
-.sidebar .queue {
-  height: 60%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 80%;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  overflow-y: auto;
-}
-
-.sidebar .queue h4 {
-  font-weight: normal;
-  text-align: left;
-  margin-bottom: 20px;
-}
-
-.sidebar .queue .song {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  height: auto;
-  padding: 10px;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.sidebar .queue .song .imgwithheart img {
-  width: 40px;
-  height: 40px;
-  -o-object-fit: cover;
-     object-fit: cover;
-  margin-right: 10px;
-}
-
-.sidebar .queue .song .imgwithheart i {
-  position: relative;
-  left: -20px;
-  top: 10px;
-}
-
-.sidebar .queue .song .details .songname {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-  font-size: 12px;
-  width: 100px;
-}
-
-.sidebar .queue .song .details .movie {
-  font-weight: 100;
-  font-size: 10px;
-  color: #838383;
-}
-
-.sidebar .queue .song .menubtn {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  margin-left: auto;
-}
-
-.sidebar .queue .song:hover {
-  background-color: rgba(128, 128, 128, 0.144);
-  cursor: pointer;
-}
-
-.sidebar .queue::-webkit-scrollbar {
-  width: 0px;
-}
-
-.sidebar .queue::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-.sidebar .queue::-webkit-scrollbar-thumb {
-  background: #888;
-}
-
-.sidebar .queue::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
+  flex-direction: column;
+  align-items: center; }
+  .sidebar .brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+    flex-direction: column;
+    color: #FF5042;
+    font-weight: bold;
+    font-size: 20px; }
+    .sidebar .brand img {
+      text-align: center;
+      width: 50px;
+      margin-bottom: 10px; }
+  .sidebar hr {
+    width: 80%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-color: gray; }
+  .sidebar .account {
+    display: flex;
+    width: 80%;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px; }
+    .sidebar .account a {
+      text-decoration: none;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 50px;
+      text-align: center;
+      margin-bottom: 10px;
+      width: 80%; }
+    .sidebar .account .login {
+      background-color: #FF2A66; }
+    .sidebar .account .register {
+      background-color: #FF583B; }
+    .sidebar .account .username {
+      margin-bottom: 5px; }
+  .sidebar .queue {
+    height: 60%;
+    display: flex;
+    width: 80%;
+    flex-direction: column;
+    overflow-y: auto; }
+    .sidebar .queue h4 {
+      font-weight: normal;
+      text-align: left;
+      margin-bottom: 20px; }
+    .sidebar .queue .song {
+      display: flex;
+      height: auto;
+      padding: 10px;
+      align-items: center; }
+      .sidebar .queue .song .imgwithheart img {
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+        margin-right: 10px; }
+      .sidebar .queue .song .imgwithheart i {
+        position: relative;
+        left: -20px;
+        top: 10px; }
+      .sidebar .queue .song .details .songname {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        font-size: 12px;
+        width: 100px; }
+      .sidebar .queue .song .details .movie {
+        font-weight: 100;
+        font-size: 10px;
+        color: #838383; }
+      .sidebar .queue .song .menubtn {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        margin-left: auto; }
+    .sidebar .queue .song:hover {
+      background-color: rgba(128, 128, 128, 0.144);
+      cursor: pointer; }
+  .sidebar .queue::-webkit-scrollbar {
+    width: 0px; }
+  .sidebar .queue::-webkit-scrollbar-track {
+    background: #f1f1f1; }
+  .sidebar .queue::-webkit-scrollbar-thumb {
+    background: #888; }
+  .sidebar .queue::-webkit-scrollbar-thumb:hover {
+    background: #555; }
 
 .player {
   background-color: rgba(247, 247, 247, 0.048);
@@ -203,147 +121,79 @@ body {
   height: 80px;
   width: 70%;
   min-width: calc(100% - 300px);
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-.player .playeractions {
-  padding-left: 20px;
-  width: 80%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.player .playeractions .moviedetails {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.player .playeractions .moviedetails .songname {
-  font-size: 15px;
-}
-
-.player .playeractions .moviedetails .moviename {
-  margin-left: 10px;
-  font-size: 12px;
-  color: gray;
-  background-color: rgba(0, 0, 0, 0.514);
-  padding: 5px;
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-.player .playeractions .actions {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.player .playeractions .actions svg {
-  cursor: pointer;
-}
-
-.player .playeractions .actions .nextprevpause {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.player .playeractions .actions .nextprevpause i {
-  font-size: 30px;
-}
-
-.player .playeractions .actions .nextprevpause svg {
-  fill: white;
-}
-
-.player .playeractions .presentduration {
-  width: 40px;
-}
-
-.player .playeractions .progress {
-  width: 70%;
-  background-color: white;
-  height: 5px;
-  border-radius: 50px;
-  -webkit-appearance: none;
-  border-radius: 5px;
-  background: #d3d3d3;
-  outline: none;
-  opacity: 0.7;
-  -webkit-transition: .2s;
-  -webkit-transition: opacity .2s;
-  transition: opacity .2s;
-}
-
-.player .playeractions .progress::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  background: #FF583B;
-  cursor: pointer;
-}
-
-.player .playeractions .progress::-moz-range-thumb {
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  background: #FF583B;
-  cursor: pointer;
-}
+  align-items: center;
+  justify-content: center; }
+  .player .playeractions {
+    padding-left: 20px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+    .player .playeractions .moviedetails {
+      display: flex; }
+      .player .playeractions .moviedetails .songname {
+        font-size: 15px; }
+      .player .playeractions .moviedetails .moviename {
+        margin-left: 10px;
+        font-size: 12px;
+        color: gray;
+        background-color: rgba(0, 0, 0, 0.514);
+        padding: 5px;
+        border-radius: 10px;
+        cursor: pointer; }
+    .player .playeractions .actions {
+      width: 100%;
+      display: flex;
+      align-items: center; }
+      .player .playeractions .actions svg {
+        cursor: pointer; }
+      .player .playeractions .actions .nextprevpause {
+        display: flex;
+        align-items: center; }
+        .player .playeractions .actions .nextprevpause i {
+          font-size: 30px; }
+        .player .playeractions .actions .nextprevpause svg {
+          fill: white; }
+    .player .playeractions .presentduration {
+      width: 40px; }
+    .player .playeractions .progress {
+      width: 70%;
+      background-color: white;
+      height: 5px;
+      border-radius: 50px;
+      -webkit-appearance: none;
+      border-radius: 5px;
+      background: #d3d3d3;
+      outline: none;
+      opacity: 0.7;
+      -webkit-transition: .2s;
+      transition: opacity .2s; }
+    .player .playeractions .progress::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: #FF583B;
+      cursor: pointer; }
+    .player .playeractions .progress::-moz-range-thumb {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: #FF583B;
+      cursor: pointer; }
 
 .search {
   position: absolute;
   right: 10px;
-  top: 10px;
-}
-
-.search input {
-  background-color: white;
-  padding: 5px;
-  border-radius: 50px;
-}
-
-.search input::-webkit-input-placeholder {
-  color: black;
-}
-
-.search input:-ms-input-placeholder {
-  color: black;
-}
-
-.search input::-ms-input-placeholder {
-  color: black;
-}
-
-.search input::placeholder {
-  color: black;
-}
+  top: 10px; }
+  .search input {
+    background-color: white;
+    padding: 5px;
+    border-radius: 50px; }
+  .search input::placeholder {
+    color: black; }
 
 .mainbody {
   width: calc(70% - 60px);
@@ -353,203 +203,112 @@ body {
   position: absolute;
   right: 0;
   right: 20px;
-  overflow: auto;
-}
-
-.mainbody .movie {
-  padding: 10px;
-  margin-right: 40px;
-  cursor: pointer;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 150px;
-}
-
-.mainbody .movie img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  -o-object-position: top;
-     object-position: top;
-  -o-object-fit: cover;
-     object-fit: cover;
-  margin-bottom: 10px;
-}
-
-.mainbody .movie .name {
-  font-size: 15px;
-  width: 100%;
-  text-align: center;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.mainbody .movie .year {
-  color: gray;
-  font-size: 12px;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
-.mainbody .movie .year:hover {
-  color: #FF583B;
-}
-
-.mainbody .movie:hover {
-  background-color: rgba(255, 255, 255, 0.055);
-}
-
-.mainbody #viewmore {
-  color: #FF2A66;
-  font-size: 12px;
-  font-weight: normal;
-  margin-left: 5px;
-  cursor: pointer;
-}
-
-.mainbody .movies {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  overflow-x: hidden;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.mainbody .movies:hover {
-  overflow-x: auto;
-}
+  overflow: auto; }
+  .mainbody .movie {
+    padding: 10px;
+    margin-right: 40px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 150px; }
+    .mainbody .movie img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-position: top;
+      object-fit: cover;
+      margin-bottom: 10px; }
+    .mainbody .movie .name {
+      font-size: 15px;
+      width: 100%;
+      text-align: center;
+      overflow: hidden;
+      text-overflow: ellipsis; }
+    .mainbody .movie .year {
+      color: gray;
+      font-size: 12px;
+      width: fit-content; }
+    .mainbody .movie .year:hover {
+      color: #FF583B; }
+  .mainbody .movie:hover {
+    background-color: rgba(255, 255, 255, 0.055); }
+  .mainbody #viewmore {
+    color: #FF2A66;
+    font-size: 12px;
+    font-weight: normal;
+    margin-left: 5px;
+    cursor: pointer; }
+  .mainbody .movies {
+    display: flex;
+    overflow-x: hidden;
+    align-items: center; }
+  .mainbody .movies:hover {
+    overflow-x: auto; }
 
 *::-webkit-scrollbar {
   width: 5px;
   height: 8px;
-  border-radius: 20px;
-}
+  border-radius: 20px; }
 
 *::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
+  background: #f1f1f1; }
 
 *::-webkit-scrollbar-thumb {
-  background: #888;
-}
+  background: #888; }
 
 *::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
+  background: #555; }
 
 .logindiv {
-  height: 100%;
-}
-
-.logindiv form {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  position: relative;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-}
-
-.logindiv form input {
-  padding: 10px;
-  border-radius: 20px;
-  background-color: rgba(255, 255, 255, 0.144);
-  width: 200px;
-  margin-bottom: 20px;
-}
-
-.logindiv form #username {
-  border: solid 1px #FF2A66;
-  color: #FF583B;
-}
-
-.logindiv form #password {
-  border: solid 1px #FF583B;
-  color: #FF2A66;
-}
-
-.logindiv form input::-webkit-input-placeholder {
-  color: white;
-}
-
-.logindiv form input:-ms-input-placeholder {
-  color: white;
-}
-
-.logindiv form input::-ms-input-placeholder {
-  color: white;
-}
-
-.logindiv form input::placeholder {
-  color: white;
-}
-
-.logindiv form button {
-  font-size: 15px;
-  text-transform: uppercase;
-  padding: 5px;
-  width: 150px;
-  border-radius: 10px;
-  cursor: pointer;
-  background-color: #c5c5c5;
-}
-
-.logindiv form button:hover {
-  background-color: white;
-}
+  height: 100%; }
+  .logindiv form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+    .logindiv form input {
+      padding: 10px;
+      border-radius: 20px;
+      background-color: rgba(255, 255, 255, 0.144);
+      width: 200px;
+      margin-bottom: 20px; }
+    .logindiv form #username {
+      border: solid 1px #FF2A66;
+      color: #FF583B; }
+    .logindiv form #password {
+      border: solid 1px #FF583B;
+      color: #FF2A66; }
+    .logindiv form input::placeholder {
+      color: white; }
+    .logindiv form button {
+      font-size: 15px;
+      text-transform: uppercase;
+      padding: 5px;
+      width: 150px;
+      border-radius: 10px;
+      cursor: pointer;
+      background-color: #c5c5c5; }
+    .logindiv form button:hover {
+      background-color: white; }
 
 .byalphabet {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.byalphabet .alphabets {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-}
-
-.byalphabet a {
-  text-decoration: none;
-  color: white;
-  font-weight: 100;
-  padding: 15px;
-  font-size: 15px;
-  cursor: pointer;
-}
-
-.byalphabet a:nth-child(even):hover {
-  color: #FF583B;
-}
-
-.byalphabet a:nth-child(odd):hover {
-  color: #FF2A66;
-}
-/*# sourceMappingURL=main.css.map */
+  flex-direction: column; }
+  .byalphabet .alphabets {
+    display: flex;
+    flex-wrap: wrap; }
+  .byalphabet a {
+    text-decoration: none;
+    color: white;
+    font-weight: 100;
+    padding: 15px;
+    font-size: 15px;
+    cursor: pointer; }
+  .byalphabet a:nth-child(even):hover {
+    color: #FF583B; }
+  .byalphabet a:nth-child(odd):hover {
+    color: #FF2A66; }
