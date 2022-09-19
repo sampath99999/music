@@ -7,6 +7,7 @@ var favicon = require('serve-favicon');
 const session = require('express-session');
 const database = require("./controllers/database");
 require('dotenv').config()
+var session = require('express-session')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
