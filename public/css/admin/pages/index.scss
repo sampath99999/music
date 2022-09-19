@@ -1,7 +1,7 @@
 .index{
     .centerDiv{
         position: absolute;
-        width: 50%;
+        width: 60%;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
@@ -46,6 +46,7 @@
                 margin-bottom: 10px;
                 width: 50%;
                 color: white;
+                font-size: 12px;
             }
             .welcome{
                 color: white;
@@ -54,7 +55,7 @@
                 margin-top: 20px;
                 display: block;
                 color: rgb(224, 224, 224);
-                font-size: 14px;
+                font-size: 10px;
                 text-align: center;
                 span{
                     font-weight: bold;
@@ -73,6 +74,11 @@
                 flex-direction: column;
                 align-items: center;
                 text-align: center;
+                strong{
+                    font-size: 12px;
+                    color: red;
+                    animation: cssAnimation 0s ease-in 3s forwards;
+                }
                 p{
                     font-size: 10px;
                     color: gray;
@@ -92,7 +98,7 @@
                 }
                 button{
                     padding: 10px 0px;
-                    width: 60%;
+                    width: 80%;
                     background-color: #ED4D6E;
                     border-radius: 10px;
                     border: none;
@@ -101,5 +107,14 @@
                 }
             }
         }
+    }
+}
+
+
+@keyframes cssAnimation {
+    to {
+        width: 0;
+        height: 0;
+        overflow:hidden;
     }
 }

@@ -21,12 +21,15 @@
             </i>
         </div>
         <div class="right">
-            <form action="#">
+            <form method="POST" action="#">
                 <h3>LOGIN</h3>
+                <% if (locals.error) { %>
+                    <strong><%= locals.error; %></strong>
+                <% } %>
                 <p>Enter your login username and password to goto your dashboard to maange website</p>
                 <hr>
-                <input type="text" placeholder="Username...">
-                <input type="text" placeholder="Password...">
+                <input type="text" name="username" placeholder="Username...">
+                <input type="text" name="password" placeholder="Password...">
                 <button>Login</button>
             </form>
         </div>

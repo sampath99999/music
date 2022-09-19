@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:300,500,700&display=swap");
 .index .centerDiv {
   position: absolute;
-  width: 50%;
+  width: 60%;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -43,14 +43,15 @@
     .index .centerDiv .left hr {
       margin-bottom: 10px;
       width: 50%;
-      color: white; }
+      color: white;
+      font-size: 12px; }
     .index .centerDiv .left .welcome {
       color: white; }
     .index .centerDiv .left .quote {
       margin-top: 20px;
       display: block;
       color: #e0e0e0;
-      font-size: 14px;
+      font-size: 10px;
       text-align: center; }
       .index .centerDiv .left .quote span {
         font-weight: bold;
@@ -66,6 +67,10 @@
       flex-direction: column;
       align-items: center;
       text-align: center; }
+      .index .centerDiv .right form strong {
+        font-size: 12px;
+        color: red;
+        animation: cssAnimation 0s ease-in 3s forwards; }
       .index .centerDiv .right form p {
         font-size: 10px;
         color: gray;
@@ -82,12 +87,18 @@
           border-bottom-color: #ED4D6E; }
       .index .centerDiv .right form button {
         padding: 10px 0px;
-        width: 60%;
+        width: 80%;
         background-color: #ED4D6E;
         border-radius: 10px;
         border: none;
         color: white;
         cursor: pointer; }
+
+@keyframes cssAnimation {
+  to {
+    width: 0;
+    height: 0;
+    overflow: hidden; } }
 
 * {
   font-family: 'Poppins', sans-serif;
