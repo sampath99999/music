@@ -5,8 +5,13 @@ var jwt = require("jsonwebtoken");
 const session = require("express-session");
 
 router.get("/", (req, res) => {
-    res.render("admin/index.ejs");
-    console.log(req.session)
+    const session = req.session
+    if (session.loggedIn == true) {
+        res.redirect("admin/dashboard")
+    } else {
+        res.render("admin/index.ejs");
+        console.log(req.session)
+    }
 });
 
 router.post("/", (req, res) => {
@@ -19,12 +24,12 @@ router.post("/", (req, res) => {
             session.token = token;
             res.redirect("/admin/dashboard");
         } else {
-            res.render("admin/index.ejs", {error: response.message});
+            res.render("admin/index.ejs", { error: response.message });
         }
     });
 });
 
-router.get("/dashboard", (req,res) => {
+router.get("/dashboard", (req, res) => {
     res.render("admin/dashboard")
 })
 

@@ -12,21 +12,21 @@
     <div class="centerDiv">
         <div class="left">
             <img src="https://alexwebdevelop.com/wp-content/uploads/2019/08/php-login-and-authentication-the-definitive-guide.png" alt="">
-            <div class="brand">Sangeetham</div>
+            <div class="brand headerText">Sangeetham</div>
             <hr>
-            <p class="welcome">Welcome Back</p>
-            <i class="quote">
+            <p class="welcome headerText2">Welcome Back</p>
+            <i class="quote smallText">
                 "If you want to live a happy life, tie it to a goal, not to people or things."– 
                 <span>Albert Einstein</span>
             </i>
         </div>
         <div class="right">
             <form method="POST" action="#">
-                <h3>LOGIN</h3>
+                <h3 class="headerText2">LOGIN</h3>
                 <% if (locals.error) { %>
                     <strong><%= locals.error; %></strong>
                 <% } %>
-                <p>Enter your login username and password to goto your dashboard to maange website</p>
+                <p class="smallText">Enter your login username and password to goto your dashboard to maange website</p>
                 <hr>
                 <input type="text" name="username" placeholder="Username...">
                 <input type="text" name="password" placeholder="Password...">
