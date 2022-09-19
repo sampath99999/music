@@ -1,0 +1,24 @@
+<div class="sidebar">
+    <h3 class="brand headerText2">
+        Sangeetham
+    </h3>
+    <p class="title">MENU</p>
+    <ul>
+        <li <% if (page_name === 'home') { %>class="active" <% } %>>
+            <i data-feather="home"></i>
+            <p>Home</p>
+        </li>
+        <li <% if (page_name === 'artists') { %>class="active" <% } %>>
+            <i data-feather="mic"></i>
+            <p>ARTISTS</p>
+        </li>
+        <li <% if (page_name === 'film') { %>class="active" <% } %>>
+            <i data-feather="film"></i>
+            <p>MOVIES</p>
+        </li>
+        <li <% if (page_name === 'user') { %>class="active" <% } %>>
+            <i data-feather="user"></i>
+            <p>USERS</p>
+        </li>
+    </ul>
+</div>

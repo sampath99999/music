@@ -11,30 +11,7 @@
     <link rel="stylesheet" href="/css/admin/main.css">
 </head>
 <body class="dashboard">
-    <div class="sidebar">
-        <h3 class="brand headerText2">
-            Sangeetham
-        </h3>
-        <p class="title">MENU</p>
-        <ul>
-            <li class="active">
-                <i data-feather="home"></i>
-                <p>Home</p>
-            </li>
-            <li class="">
-                <i data-feather="mic"></i>
-                <p>ARTISTS</p>
-            </li>
-            <li class="">
-                <i data-feather="film"></i>
-                <p>MOVIES</p>
-            </li>
-            <li class="">
-                <i data-feather="user"></i>
-                <p>USERS</p>
-            </li>
-        </ul>
-    </div>
+    <%- include('./sidebar', {page_name: 'home'}); %>
     <div class="content">
 
     </div>
