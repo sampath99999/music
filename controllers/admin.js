@@ -42,6 +42,18 @@ module.exports.checkAdminExists = (adminDetails, callback) => {
 };
 //!SECTION check if admin exists
 
+//SECTION check if admin exists by ID
+module.exports.checkAdminExists = (adminId, callback) => {
+    adminModel.findOne({ _id: adminId }, (err, admin) => {
+        if (admin) {
+            callback(true);
+        } else {
+            callback(false);
+        }
+    });
+};
+//!SECTION check if admin exists by ID
+
 //SECTION Login Admin
 module.exports.loginAdmin = (admin, callback) => {
     adminModel.findOne({ username: admin.username }, (err, doc) => {

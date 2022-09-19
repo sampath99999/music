@@ -6,13 +6,22 @@ $mainColor: #171738;
     height: 100%;
     width: 100%;
     background-color: #171738;
+    color: white;
 
     .sidebar {
         width: 250px;
-        background-color: rgba(255, 255, 255, 0.022);
         height: 100%;
-        color: white;
-
+        transition: all ease 0.5s;
+        background: #1a1a40;
+        @media screen and (max-width: 500px) {
+            position:absolute;
+            left: -100%; 
+            &:after{
+                position: absolute;
+                width: 100%;
+                background-color: black;
+            }
+        }
         .brand {
             padding: 15px;
         }
@@ -33,12 +42,12 @@ $mainColor: #171738;
                 align-items: center;
                 cursor: pointer;
                 border-left: solid 5px rgba(255, 255, 255, 0);
-                
+
                 &:hover {
                     border-left: solid 5px white;
                     border-radius: 5px;
                 }
-                
+
                 p {
                     font-size: 14px;
                     margin-left: 15px;
@@ -51,6 +60,23 @@ $mainColor: #171738;
                 border-radius: 5px;
                 background-color: rgba(255, 255, 255, 0.119);
             }
+        }
+    }
+}
+
+.content {
+    width: 100%;
+    .header {
+        display: none;
+        @media screen and (max-width: 500px) {
+            display: flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.082);
+            width: 100%;
+            padding: 15px;
+            justify-content: space-between;
+            max-width: 100%;
+            box-sizing: border-box;
         }
     }
 }
