@@ -1,51 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artists || Dashboard || Sangeetham</title>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Artists || Dashboard || Sangeetham</title>
 
-    <script src="https://unpkg.com/feather-icons"></script>
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/feather-icons"></script>
 
-    <link rel="stylesheet" href="/css/admin/main.css">
-</head>
-<body class="dashboard artists">
-    <%- include('./sidebar', {page_name: 'artists'}); %>
-    <div class="content">
-        <%- include('./header'); %>
-        
-        <div class="topbar">
-            <div class="title">ARTISTS</div>
-            <div class="buttonsGroup">
-                <button>
-                    <i class="feather" data-feather="plus"></i>
-                    <p class="smallText">Add New Artist</p>
-                </button>
+        <link rel="stylesheet" href="/css/admin/main.css" />
+    </head>
+    <body id="artists" class="dashboard artists">
+        <%- include('./sidebar', {page_name: 'artists'}); %>
+        <div class="content">
+            <%- include('./header'); %>
+
+            <div class="topbar">
+                <div class="title">ARTISTS</div>
+                <div class="buttonsGroup">
+                    <button onclick="createNewArtist()">
+                        <i class="feather" data-feather="plus"></i>
+                        <p class="smallText">Add New Artist</p>
+                    </button>
+                </div>
             </div>
-        </div>
-        
 
-        <div class="artists">
-            <div class="artist">
-                <img src="https://celebrityborn.com/admin/assets/images/people/6tY7CyXZs8Cd4fM08oH9_2017_07_26.jpg" alt="">
-                <p class="title">Devi Sri Prasad</p>
-                <p class="about">Devi Sri Prasad is an Indian film composer, lyricist, singer-songwriter, and performer. Popularly known by his initials DSP, he is best known for his work in Telugu films. He also worked in few Tamil films.</p>
-                <div class="buttonsgroup">
-                    <div class="edit">
-                        <i class="feather" data-feather="edit"></i>
+            <div class="artists">
+                <% artists.forEach(function(artist){ %>
+                <div class="artist">
+                    <img src="<%= artist.cover; %>" % />
+                    <p class="title"><%= artist.name; %></p>
+                    <p class="about"><%= artist.about; %></p>
+                    <div class="buttonsgroup">
+                        <div data-name='<%= artist.name; %>'
+                            data-about='<%= artist.about; %>' data-cover='<%=
+                            artist.cover; %>' class="edit">
+                            <i class="feather" data-feather="edit"></i>
+                        </div>
+                        <div class="delete">
+                            <i class="feather" data-feather="trash"></i>
+                        </div>
                     </div>
-                    <div class="delete">
-                        <i class="feather" data-feather="trash"></i>
+                </div>
+                <% }); %>
+                <!-- <div class="artist">
+                    <img
+                        src="https://celebrityborn.com/admin/assets/images/people/6tY7CyXZs8Cd4fM08oH9_2017_07_26.jpg"
+                        alt=""
+                    />
+                    <p class="title">Devi Sri Prasad</p>
+                    <p class="about">
+                        Devi Sri Prasad is an Indian film composer, lyricist,
+                        singer-songwriter, and performer. Popularly known by his
+                        initials DSP, he is best known for his work in Telugu
+                        films. He also worked in few Tamil films.
+                    </p>
+                    <div class="buttonsgroup">
+                        <div class="edit">
+                            <i class="feather" data-feather="edit"></i>
+                        </div>
+                        <div class="delete">
+                            <i class="feather" data-feather="trash"></i>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+
+            <div id="modal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <img
+                            id="artistImageEle"
+                            onerror="if (this.src != '/images/notfound.png') this.src = '/images/notfound.png';"
+                            id="artistImage"
+                            src="/images/notfound.png"
+                            alt=""
+                        />
+                        <button onclick="toggleDialog()">
+                            <i class="feather" data-feather="x"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="title">ARTIST</div>
+                        <form onsubmit="event.preventDefault();" action="">
+                            <div class="inputGroup">
+                                <div class="left">
+                                    <p>Name:</p>
+                                </div>
+                                <div class="right">
+                                    <input
+                                        type="text"
+                                        id="artistNameInput"
+                                        placeholder="Artist Name..."
+                                    />
+                                </div>
+                            </div>
+                            <div class="inputGroup">
+                                <div class="left">
+                                    <p>Cover:</p>
+                                </div>
+                                <div class="right">
+                                    <input
+                                        type="text"
+                                        onchange='document.getElementById("artistImageEle").src = this.value'
+                                        id="artistCoverInput"
+                                        placeholder="Artist Cover..."
+                                    />
+                                </div>
+                            </div>
+                            <div class="inputGroup">
+                                <div class="left">
+                                    <p>About:</p>
+                                </div>
+                                <div class="right">
+                                    <input
+                                        type="text"
+                                        value="Hello"
+                                        id="artistAboutInput"
+                                        placeholder="Artist About..."
+                                    />
+                                </div>
+                            </div>
+                            <button id="saveBtn" onclick="">
+                                <p>Save</p>
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
 
-    </div>
+        <script>
+            feather.replace();
 
-    <script>
-        feather.replace()
-      </script>
-</body>
+            function createNewArtist() {
+                toggleDialog();
+                document.getElementById("artistNameInput").value = "";
+                document.getElementById("artistCoverInput").value = "";
+                document.getElementById("artistAboutInput").value = "";
+                document
+                    .getElementById("saveBtn")
+                    .setAttribute("onclick", "createArtist()");
+            }
+
+            function updateArtist(e) {
+                document.getElementById("artistNameInput").value =
+                    e.getAttribute("data-name");
+                document.getElementById("artistCoverInput").value =
+                    e.getAttribute("data-cover");
+                document.getElementById("artistAboutInput").value =
+                    e.getAttribute("data-about");
+                document
+                    .getElementById("saveBtn")
+                    .setAttribute("onclick", "updateArtist()");
+            }
+            function toggleDialog() {
+                if (
+                    document.getElementById("modal").style.display == "none" ||
+                    document.getElementById("modal").style.display == ""
+                ) {
+                    document.getElementById("modal").style.display = "flex";
+                    $('#artists').css('overflow', 'hidden');
+                } else {
+                    document.getElementById("modal").style.display = "none";
+                    $('#artists').css('overflow', 'auto');
+                }
+            }
+
+            function createArtist(){
+                var data = {
+                    name: document.getElementById("artistNameInput").value,
+                    cover: document.getElementById("artistCoverInput").value,
+                    about: document.getElementById("artistAboutInput").value,
+                    method: "new"
+                }
+                $.post('/admin/artists', data, function(response){ 
+                    if(response.status == true){
+                        location.reload();
+                    } else {
+                        if(response.error == 'logout!'){
+                            console.log('Logout')//TODO call logout
+                        } else {
+                            alert(response.error)
+                        }
+                    }
+                });
+            }
+        </script>
+    </body>
 </html>

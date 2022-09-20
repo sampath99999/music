@@ -119,7 +119,7 @@
     height: 100%;
     transition: all ease 0.5s;
     background: #1a1a40;
-    z-index: 10000; }
+    z-index: 100; }
     @media screen and (max-width: 500px) {
       .dashboard .sidebar {
         position: absolute;
@@ -206,7 +206,8 @@
 
 .artists .content .artists {
   display: flex;
-  padding: 25px; }
+  padding: 25px;
+  flex-wrap: wrap; }
   @media screen and (max-width: 500px) {
     .artists .content .artists {
       flex-direction: column;
@@ -216,10 +217,16 @@
     width: 20%;
     background-color: rgba(255, 255, 255, 0.11);
     padding: 15px;
+    margin-right: 20px;
+    margin-bottom: 20px;
     position: relative; }
     @media screen and (max-width: 500px) {
       .artists .content .artists .artist {
         width: 90%; } }
+    @media screen and (min-width: 500px) and (max-width: 1000px) {
+      .artists .content .artists .artist {
+        width: 40%;
+        box-sizing: border-box; } }
     .artists .content .artists .artist:hover .buttonsgroup {
       display: flex; }
     .artists .content .artists .artist img {
@@ -228,7 +235,10 @@
       object-fit: cover; }
     .artists .content .artists .artist .title {
       font-weight: bold;
-      margin-top: 15px; }
+      margin-top: 15px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap; }
     .artists .content .artists .artist .about {
       font-size: 10px;
       color: #adadad;
@@ -246,12 +256,78 @@
       align-items: center;
       padding: 5px;
       border-radius: 30px 0px 0px 30px; }
-      .artists .content .artists .artist .buttonsgroup .edit, .artists .content .artists .artist .buttonsgroup .delete {
+      .artists .content .artists .artist .buttonsgroup .edit,
+      .artists .content .artists .artist .buttonsgroup .delete {
         margin-left: 10px;
         cursor: pointer; }
-        .artists .content .artists .artist .buttonsgroup .edit .feather, .artists .content .artists .artist .buttonsgroup .delete .feather {
+        .artists .content .artists .artist .buttonsgroup .edit .feather,
+        .artists .content .artists .artist .buttonsgroup .delete .feather {
           width: 15px;
           height: 15px; }
+
+.artists .modal {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 105;
+  background-color: rgba(0, 0, 0, 0.795);
+  width: 100%;
+  height: 100%;
+  display: none;
+  align-items: center;
+  justify-content: center; }
+  .artists .modal .modal-content {
+    height: max-content;
+    background-color: #171738;
+    padding: 0px 30px 30px 30px;
+    position: relative;
+    width: 300px; }
+    .artists .modal .modal-content .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+      .artists .modal .modal-content .modal-header #artistImageEle {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        margin-top: 20px; }
+      .artists .modal .modal-content .modal-header button {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        background: none;
+        border: none;
+        cursor: pointer; }
+        .artists .modal .modal-content .modal-header button .feather {
+          stroke: white; }
+    .artists .modal .modal-content .modal-body .title {
+      margin-top: 20px;
+      font-weight: bold; }
+    .artists .modal .modal-content .modal-body form {
+      margin-top: 20px; }
+      .artists .modal .modal-content .modal-body form .inputGroup {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px; }
+        .artists .modal .modal-content .modal-body form .inputGroup p {
+          font-size: 14px; }
+        .artists .modal .modal-content .modal-body form .inputGroup input {
+          font-size: 14px;
+          padding: 5px 10px;
+          border: none;
+          background: none;
+          border-bottom: solid 1px white;
+          color: #d4d4d4; }
+    .artists .modal .modal-content .modal-body button {
+      padding: 5px;
+      width: 100%;
+      margin-top: 20px;
+      border: none;
+      background: #629677;
+      color: white;
+      cursor: pointer;
+      border-radius: 30px; }
 
 * {
   font-family: 'Poppins', sans-serif;

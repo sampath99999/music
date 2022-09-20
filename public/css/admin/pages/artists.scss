@@ -1,20 +1,20 @@
-.artists{
-    .content{
+.artists {
+    .content {
         // padding: 25px;
-        .topbar{
+        .topbar {
             margin-top: 0 25px;
             padding: 25px;
             display: flex;
             align-items: center;
-            .title{
+            .title {
                 font-weight: bold;
                 width: fit-content;
                 margin-right: 20px;
             }
         }
-        .buttonsGroup{
+        .buttonsGroup {
             display: flex;
-            button{
+            button {
                 display: flex;
                 align-items: center;
                 padding: 10px 15px;
@@ -23,10 +23,10 @@
                 cursor: pointer;
                 background-color: #629677;
                 color: white;
-                &:hover > p{
+                &:hover > p {
                     max-width: 7rem;
                 }
-                p{
+                p {
                     max-width: 0;
                     transition: max-width 0.5s;
                     display: inline-block;
@@ -34,44 +34,53 @@
                     white-space: nowrap;
                     overflow: hidden;
                 }
-                .feather{
+                .feather {
                     width: 15px;
                     height: 15px;
                 }
             }
         }
-        .artists{
+        .artists {
             display: flex;
             padding: 25px;
-            
-            @media screen and (max-width: 500px){
+            flex-wrap: wrap;
+            @media screen and (max-width: 500px) {
                 flex-direction: column;
                 align-items: center;
                 padding: 25px;
             }
-            .artist{
+            .artist {
                 width: 20%;
                 background-color: rgba(255, 255, 255, 0.11);
                 padding: 15px;
+                margin-right: 20px;
+                margin-bottom: 20px;
                 position: relative;
-                @media screen and (max-width: 500px){
+                @media screen and (max-width: 500px) {
                     width: 90%;
                 }
-                &:hover{
-                    .buttonsgroup{
+                @media screen and (min-width: 500px) and (max-width: 1000px) {
+                    width: 40%;
+                    box-sizing: border-box;
+                }
+                &:hover {
+                    .buttonsgroup {
                         display: flex;
                     }
                 }
-                img{
+                img {
                     width: 100%;
                     height: 200px;
                     object-fit: cover;
                 }
-                .title{
+                .title {
                     font-weight: bold;
                     margin-top: 15px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
                 }
-                .about{
+                .about {
                     font-size: 10px;
                     color: rgb(173, 173, 173);
                     line-height: 1.5em;
@@ -80,7 +89,7 @@
                     text-overflow: ellipsis;
                     margin-top: 5px;
                 }
-                .buttonsgroup{
+                .buttonsgroup {
                     position: absolute;
                     top: 10px;
                     right: 0;
@@ -89,14 +98,92 @@
                     align-items: center;
                     padding: 5px;
                     border-radius: 30px 0px 0px 30px;
-                    .edit, .delete{
+                    .edit,
+                    .delete {
                         margin-left: 10px;
                         cursor: pointer;
-                        .feather{
+                        .feather {
                             width: 15px;
                             height: 15px;
                         }
                     }
+                }
+            }
+        }
+    }
+    .modal {
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 105;
+        background-color: rgba(0, 0, 0, 0.795);
+        width: 100%;
+        height: 100%;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        .modal-content {
+            height: max-content;
+            background-color: $mainColor;
+            padding: 0px 30px 30px 30px;
+            position: relative;
+            width: 300px;
+            .modal-header{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                #artistImageEle{
+                    width: 150px;
+                    height: 150px;
+                    object-fit: cover;
+                    margin-top: 20px;
+                }
+                button{
+                    position: absolute;
+                    right: 10px;
+                    top: 10px;
+                    background: none;
+                    border: none;
+                    cursor: pointer;
+                    .feather{
+                        stroke: white;
+                    }
+                }
+            }
+            .modal-body{
+                .title{
+                    margin-top: 20px;
+                    font-weight: bold;
+                }
+                form{
+                    margin-top: 20px;
+                    .inputGroup{
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        margin-bottom: 20px;
+                        p{
+                            font-size: 14px;
+                        }
+                        input{
+                            font-size: 14px;
+                            padding: 5px 10px;
+                            border: none;
+                            background: none;
+                            border-bottom: solid 1px white;
+                            color: rgb(212, 212, 212);
+                        }
+                    }
+                }
+                button{
+                    padding: 5px;
+                    width: 100%;
+                    margin-top: 20px;
+                    border: none;
+                    background: #629677;
+                    color: white;
+                    cursor: pointer;
+                    border-radius: 30px;
                 }
             }
         }

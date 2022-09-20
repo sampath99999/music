@@ -3,6 +3,7 @@ var router = express.Router();
 const adminController = require("../controllers/admin");
 var jwt = require("jsonwebtoken");
 const session = require("express-session");
+const { getArtists, createArtist } = require("../controllers/artists");
 
 router.get("/", (req, res) => {
     const session = req.session;
@@ -34,23 +35,65 @@ router.post("/", (req, res) => {
 router.get("/dashboard", (req, res) => {
     const session = req.session;
     this.checkIfAdminIsReal(session, (response) => {
-        if(response == true){
-            res.render("admin/dashboard")
+        if (response == true) {
+            res.render("admin/dashboard");
         } else {
-            res.redirect("/admin")
+            res.redirect("/admin");
         }
-    })
+    });
 });
 
 router.get("/artists", (req, res) => {
     const session = req.session;
     this.checkIfAdminIsReal(session, (response) => {
-        if(response == true){
-            res.render("admin/artists")
+        if (response == true) {
+            getArtists((artists) => {
+                res.render("admin/artists", { artists: artists.data });
+            });
         } else {
-            res.redirect("/admin")
+            res.redirect("/admin");
         }
-    })
+    });
+});
+
+router.post("/artists", (req, res) => {
+    const session = req.session;
+    this.checkIfAdminIsReal(session, (response) => {
+        if (response == true) {
+            const details = req.body;
+            if (
+                details.name == "" ||
+                details.cover == "" ||
+                details.about == ""
+            ) {
+                res.send({
+                    status: false,
+                    error: "All Details Required!",
+                });
+            } else {
+                if (details.method == "new") {
+                    delete details.method;
+                    createArtist(details, (createResponse) => {
+                        if (createResponse.code == true) {
+                            res.send({
+                                status: true,
+                            });
+                        } else {
+                            res.send({
+                                status: false,
+                                error: createResponse.message,
+                            });
+                        }
+                    });
+                } else {
+                    res.send({
+                        status: false,
+                        error: "logout!",
+                    });
+                }
+            }
+        }
+    });
 });
 
 module.exports.checkIfAdminIsReal = (session, callback) => {
@@ -60,8 +103,8 @@ module.exports.checkIfAdminIsReal = (session, callback) => {
             callback(response);
         });
     } else {
-        callback(false)
+        callback(false);
     }
-}
+};
 
 module.exports = router;
