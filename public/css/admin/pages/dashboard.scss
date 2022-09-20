@@ -13,6 +13,7 @@ $mainColor: #171738;
         height: 100%;
         transition: all ease 0.5s;
         background: #1a1a40;
+        z-index: 10000;
         @media screen and (max-width: 500px) {
             position:absolute;
             left: -100%; 

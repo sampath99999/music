@@ -10,11 +10,37 @@
 
     <link rel="stylesheet" href="/css/admin/main.css">
 </head>
-<body class="dashboard">
+<body class="dashboard artists">
     <%- include('./sidebar', {page_name: 'artists'}); %>
     <div class="content">
         <%- include('./header'); %>
         
+        <div class="topbar">
+            <div class="title">ARTISTS</div>
+            <div class="buttonsGroup">
+                <button>
+                    <i class="feather" data-feather="plus"></i>
+                    <p class="smallText">Add New Artist</p>
+                </button>
+            </div>
+        </div>
+        
+
+        <div class="artists">
+            <div class="artist">
+                <img src="https://celebrityborn.com/admin/assets/images/people/6tY7CyXZs8Cd4fM08oH9_2017_07_26.jpg" alt="">
+                <p class="title">Devi Sri Prasad</p>
+                <p class="about">Devi Sri Prasad is an Indian film composer, lyricist, singer-songwriter, and performer. Popularly known by his initials DSP, he is best known for his work in Telugu films. He also worked in few Tamil films.</p>
+                <div class="buttonsgroup">
+                    <div class="edit">
+                        <i class="feather" data-feather="edit"></i>
+                    </div>
+                    <div class="delete">
+                        <i class="feather" data-feather="trash"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
 

@@ -118,7 +118,8 @@
     width: 250px;
     height: 100%;
     transition: all ease 0.5s;
-    background: #1a1a40; }
+    background: #1a1a40;
+    z-index: 10000; }
     @media screen and (max-width: 500px) {
       .dashboard .sidebar {
         position: absolute;
@@ -168,6 +169,89 @@
         justify-content: space-between;
         max-width: 100%;
         box-sizing: border-box; } }
+
+.artists .content .topbar {
+  margin-top: 0 25px;
+  padding: 25px;
+  display: flex;
+  align-items: center; }
+  .artists .content .topbar .title {
+    font-weight: bold;
+    width: fit-content;
+    margin-right: 20px; }
+
+.artists .content .buttonsGroup {
+  display: flex; }
+  .artists .content .buttonsGroup button {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    border-radius: 48px;
+    border: none;
+    cursor: pointer;
+    background-color: #629677;
+    color: white; }
+    .artists .content .buttonsGroup button:hover > p {
+      max-width: 7rem; }
+    .artists .content .buttonsGroup button p {
+      max-width: 0;
+      transition: max-width 0.5s;
+      display: inline-block;
+      vertical-align: top;
+      white-space: nowrap;
+      overflow: hidden; }
+    .artists .content .buttonsGroup button .feather {
+      width: 15px;
+      height: 15px; }
+
+.artists .content .artists {
+  display: flex;
+  padding: 25px; }
+  @media screen and (max-width: 500px) {
+    .artists .content .artists {
+      flex-direction: column;
+      align-items: center;
+      padding: 25px; } }
+  .artists .content .artists .artist {
+    width: 20%;
+    background-color: rgba(255, 255, 255, 0.11);
+    padding: 15px;
+    position: relative; }
+    @media screen and (max-width: 500px) {
+      .artists .content .artists .artist {
+        width: 90%; } }
+    .artists .content .artists .artist:hover .buttonsgroup {
+      display: flex; }
+    .artists .content .artists .artist img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover; }
+    .artists .content .artists .artist .title {
+      font-weight: bold;
+      margin-top: 15px; }
+    .artists .content .artists .artist .about {
+      font-size: 10px;
+      color: #adadad;
+      line-height: 1.5em;
+      height: 3em;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-top: 5px; }
+    .artists .content .artists .artist .buttonsgroup {
+      position: absolute;
+      top: 10px;
+      right: 0;
+      background-color: black;
+      display: none;
+      align-items: center;
+      padding: 5px;
+      border-radius: 30px 0px 0px 30px; }
+      .artists .content .artists .artist .buttonsgroup .edit, .artists .content .artists .artist .buttonsgroup .delete {
+        margin-left: 10px;
+        cursor: pointer; }
+        .artists .content .artists .artist .buttonsgroup .edit .feather, .artists .content .artists .artist .buttonsgroup .delete .feather {
+          width: 15px;
+          height: 15px; }
 
 * {
   font-family: 'Poppins', sans-serif;
