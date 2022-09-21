@@ -29,16 +29,22 @@
             <div class="artists">
                 <% artists.forEach(function(artist){ %>
                 <div class="artist">
-                    <img src="<%= artist.cover; %>" % />
+                    <img src="<%= artist.cover; %>" />
                     <p class="title"><%= artist.name; %></p>
                     <p class="about"><%= artist.about; %></p>
                     <div class="buttonsgroup">
-                        <div data-name='<%= artist.name; %>'
-                            data-about='<%= artist.about; %>' data-cover='<%=
-                            artist.cover; %>' class="edit">
+                        <div 
+                            data-name="<%= artist.name; %>"
+                            data-id="<%= artist._id; %>"
+                            data-about="<%= artist.about; %>" data-cover="<%=
+                            artist.cover; %>" class="edit"
+                            onclick="updateArtist(this)">
                             <i class="feather" data-feather="edit"></i>
                         </div>
-                        <div class="delete">
+                        <div
+                        data-id="<%= artist._id; %>"
+                        onclick="deleteArtist(this);"
+                        class="delete">
                             <i class="feather" data-feather="trash"></i>
                         </div>
                     </div>
@@ -153,7 +159,10 @@
                     e.getAttribute("data-about");
                 document
                     .getElementById("saveBtn")
-                    .setAttribute("onclick", "updateArtist()");
+                    .setAttribute("onclick", "updateArtistDetails()");
+                $('#saveBtn').attr('data-id',e.getAttribute("data-id"));
+                document.getElementById("artistImageEle").src = e.getAttribute("data-cover");
+                toggleDialog();
             }
             function toggleDialog() {
                 if (
@@ -165,6 +174,7 @@
                 } else {
                     document.getElementById("modal").style.display = "none";
                     $('#artists').css('overflow', 'auto');
+                    $('#artistImageEle').attr('src', '/images/notfound.png');
                 }
             }
 
@@ -175,6 +185,51 @@
                     about: document.getElementById("artistAboutInput").value,
                     method: "new"
                 }
+                $.post('/admin/artists', data, function(response){ 
+                    if(response.status == true){
+                        location.reload();
+                    } else {
+                        if(response.error == 'logout!'){
+                            console.log('Logout')//TODO call logout
+                        } else {
+                            alert(response.error)
+                        }
+                    }
+                });
+            }
+
+            function deleteArtist(ele) {
+                if(!confirm('Are you sure you want to delete this artist?')){
+                    return;
+                }
+                const id = $(ele).attr("data-id")
+                var data = {
+                    method: "delete",
+                    id
+                }
+                $.post('/admin/artists', data, function(response){ 
+                    if(response.status == true){
+                        location.reload();
+                    } else {
+                        if(response.error == 'logout!'){
+                            console.log('Logout')//TODO call logout
+                        } else {
+                            alert(response.error)
+                        }
+                    }
+                });
+            }
+
+
+            function updateArtistDetails(){
+                var data = {
+                    name: document.getElementById("artistNameInput").value,
+                    cover: document.getElementById("artistCoverInput").value,
+                    about: document.getElementById("artistAboutInput").value,
+                    id: $('#saveBtn').attr('data-id'),
+                    method: "edit"
+                }
+
                 $.post('/admin/artists', data, function(response){ 
                     if(response.status == true){
                         location.reload();

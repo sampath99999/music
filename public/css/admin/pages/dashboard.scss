@@ -67,6 +67,7 @@ $mainColor: #171738;
 
 .content {
     width: 100%;
+    overflow: auto;
     .header {
         display: none;
         @media screen and (max-width: 500px) {

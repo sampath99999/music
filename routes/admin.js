@@ -3,7 +3,12 @@ var router = express.Router();
 const adminController = require("../controllers/admin");
 var jwt = require("jsonwebtoken");
 const session = require("express-session");
-const { getArtists, createArtist } = require("../controllers/artists");
+const {
+    getArtists,
+    createArtist,
+    deleteArtist,
+    editArtist,
+} = require("../controllers/artists");
 
 router.get("/", (req, res) => {
     const session = req.session;
@@ -61,18 +66,18 @@ router.post("/artists", (req, res) => {
     this.checkIfAdminIsReal(session, (response) => {
         if (response == true) {
             const details = req.body;
-            if (
-                details.name == "" ||
-                details.cover == "" ||
-                details.about == ""
-            ) {
-                res.send({
-                    status: false,
-                    error: "All Details Required!",
-                });
-            } else {
-                if (details.method == "new") {
-                    delete details.method;
+            if (details.method == "new") {
+                delete details.method;
+                if (
+                    details.name == "" ||
+                    details.cover == "" ||
+                    details.about == ""
+                ) {
+                    res.send({
+                        status: false,
+                        error: "All Details Required!",
+                    });
+                } else {
                     createArtist(details, (createResponse) => {
                         if (createResponse.code == true) {
                             res.send({
@@ -85,13 +90,56 @@ router.post("/artists", (req, res) => {
                             });
                         }
                     });
-                } else {
-                    res.send({
-                        status: false,
-                        error: "logout!",
+                }
+            } else {
+                if (details.method == "delete") {
+                    deleteArtist(details.id, (deleteArtistResponse) => {
+                        if (deleteArtistResponse.code == true) {
+                            res.send({
+                                status: true,
+                            });
+                        } else {
+                            res.send({
+                                status: false,
+                                error: deleteArtistResponse.message,
+                            });
+                        }
                     });
+                } else {
+                    if (details.method == "edit") {
+                        delete details.method;
+                        if (
+                            details.name == "" ||
+                            details.cover == "" ||
+                            details.about == "" ||
+                            details.id == ""
+                        ) {
+                            res.send({
+                                status: false,
+                                error: "All Details Required!",
+                            });
+                        } else {
+                            const id = details.id;
+                            delete details.id;
+                            editArtist(id, details, (editArtistResponse) => {
+                                if (editArtistResponse.code == true) {
+                                    res.send({ status: true });
+                                } else {
+                                    res.send({
+                                        status: false,
+                                        error: editArtistResponse.message,
+                                    });
+                                }
+                            });
+                        }
+                    }
                 }
             }
+        } else {
+            res.send({
+                status: false,
+                error: "logout!",
+            });
         }
     });
 });
