@@ -1,226 +1,278 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title><%= movie.name; %> || Movie || Sangeetham</title>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= movie.name; %> || Movie || Sangeetham</title>
+        <script
+            src="https://code.jquery.com/jquery-3.6.1.min.js"
+            integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+            crossorigin="anonymous"
+        ></script>
+        <script src="https://unpkg.com/feather-icons"></script>
 
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/feather-icons"></script>
+        <link rel="stylesheet" href="/css/admin/main.css" />
+    </head>
 
-    <link rel="stylesheet" href="/css/admin/main.css" />
-</head>
+    <body class="dashboard movieDetails artists">
+        <%- include('./sidebar', {page_name: 'movies' }); %>
+        <div class="content">
+            <%- include('./header'); %>
 
-<body class="dashboard movieDetails artists">
-    <%- include('./sidebar', {page_name: 'movies' }); %>
-    <div class="content">
-        <%- include('./header'); %>
-
-        <!-- SECTION Top Bar -->
-        <div class="topbar">
-            <div class="title"><%= movie.name; %></div>
-            <div class="buttonsGroup">
-                <button onclick="openNewSongModal()">
-                    <i class="feather" data-feather="plus"></i>
-                    <p class="smallText">Add New Song</p>
-                </button>
-            </div>
-        </div>
-        <!-- !SECTION Top Bar -->
-
-        <!-- SECTION Details Tab -->
-        <div class="detailsTab">
-            <div class="left">
-                <img src="<%= movie.cover; %>" alt="" />
-            </div>
-            <div class="right">
-                <h1 class="title">
-                    <%= movie.name; %> - <%= movie.year; %>
-                </h1>
-                <p class="about"><%= movie.about; %></p>
-                <p class="rating">
-                    Rating: <%= movie.rating; %><span>&#9733;</span>
-                </p>
-                <div class="buttons">
-                    <button class="editBtn">
-                        <i class="feather" data-feather="edit"></i>
-                        <!-- <p>Edit</p> -->
-                    </button>
-                    <button class="deleteBtn">
-                        <i class="feather" data-feather="trash"></i>
-                        <!-- <p>Delete</p> -->
+            <!-- SECTION Top Bar -->
+            <div class="topbar">
+                <div class="title"><%= movie.name; %></div>
+                <div class="buttonsGroup">
+                    <button onclick="openNewSongModal()">
+                        <i class="feather" data-feather="plus"></i>
+                        <p class="smallText">Add New Song</p>
                     </button>
                 </div>
             </div>
-        </div>
-        <!-- !SECTION Details Tab -->
+            <!-- !SECTION Top Bar -->
 
-        <!-- SECTION songs -->
-        <div class="songsDetailsTab">
-            <h3 class="title">Songs</h3>
-            <% if(locals.songs) { %>
-            <% songs.forEach(function(song){ %>
-                <table>
-                    <tr>
-                        <th>Name</th>
-                        <th>Artist</th>
-                        <th>Duration</th>
-                        <th>Song Link</th>
-                    </tr>
-                    <tr>
-                        <td><%= song.name; %></td>
-                        <td><%= song.artist; %></td>
-                        <td><%= song.duration; %></td>
-                        <td><%= song.link; %></td>
-                    </tr>
-                </table>
-            <% }) %>
-            <% } %>
-        </div>
-        <!-- !SECTION songs -->
-
-        <!-- SECTION Modal -->
-        <div id="modal" class="modal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button onclick="toggleDialog()">
-                        <i class="feather" data-feather="x"></i>
-                    </button>
+            <!-- SECTION Details Tab -->
+            <div class="detailsTab">
+                <div class="left">
+                    <img src="<%= movie.cover; %>" alt="" />
                 </div>
-                <div class="modal-body">
-                    <div class="title">SONG</div>
-                    <form onsubmit="event.preventDefault();" action="">
-                        <div class="inputGroup">
-                            <div class="left">
-                                <p>Name:</p>
-                            </div>
-                            <div class="right">
-                                <input type="text" id="songName" placeholder="Song Name..." />
-                            </div>
-                        </div>
-                        <div class="inputGroup">
-                            <div class="left">
-                                <p>SongLink:</p>
-                            </div>
-                            <div class="right">
-                                <input type="text" id="songLink" placeholder="Song Link..." />
-                            </div>
-                        </div>
-                        <div class="inputGroup">
-                            <div class="left">
-                                <p>Duration:</p>
-                            </div>
-                            <div class="right">
-                                <input type="text" id="songDuration" placeholder="Song Duration..." />
-                            </div>
-                        </div>
-                        <div class="inputGroup">
-                            <div class="left">
-                                <p>Artist:</p>
-                            </div>
-                            <div class="right">
-                                <select name="artist" id="songArtist">
-                                    <% if(locals.artists) { %> <%
-                                        artists.forEach(function(artist){ %>
-                                    <option value="<%= artist._id; %>">
-                                        <%= artist.name; %>
-                                    </option>
-                                    <% }) %> <% } else {%>
-                                    <option value="0">
-                                        No Artists Found
-                                    </option>
-                                    <% } %>
-                                </select>
-                            </div>
-                        </div>
-                        <button data-id="<%= movie._id; %>" id="saveBtn" onclick="">
-                            <p>Save</p>
+                <div class="right">
+                    <h1 class="title">
+                        <%= movie.name; %> - <%= movie.year; %>
+                    </h1>
+                    <p class="about"><%= movie.about; %></p>
+                    <p class="rating">
+                        Rating: <%= movie.rating; %><span>&#9733;</span>
+                    </p>
+                    <div class="buttons">
+                        <button class="editBtn">
+                            <i class="feather" data-feather="edit"></i>
+                            <!-- <p>Edit</p> -->
                         </button>
-                    </form>
+                        <button class="deleteBtn">
+                            <i class="feather" data-feather="trash"></i>
+                            <!-- <p>Delete</p> -->
+                        </button>
+                    </div>
                 </div>
             </div>
+            <!-- !SECTION Details Tab -->
+
+            <!-- SECTION songs -->
+            <div class="songsDetailsTab">
+                <h3 class="title">Songs</h3>
+                <% if(locals.songs) { %> <% songs.forEach(function(song, index){ %>
+                <div class="songs">
+                    <div class="song">
+                        <div class="songHeader">
+                            <img src="<%= movie.cover; %>" alt="" />
+                            <div onclick="play(this,'<%= song.link %>')">
+                                <i
+                                    class="feather"
+                                    data-feather="play"
+                                    
+                                ></i>
+                            </div>
+                        </div>
+                        <div class="songContent">
+                            <p class="name"><%= song.name %></p>
+                            <p class="duration"><%= song.duration %></p>
+                            <p class="artist"><%= song.artist.name %></p>
+                        </div>
+                        <div class="menuitems">
+                            <div class="edit">
+                                <i class="feather" data-feather="edit"></i>
+                            </div>
+                            <div class="delete">
+                                <i class="feather" data-feather="trash"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <% }) %> <% } %>
+            </div>
+            <!-- !SECTION songs -->
+
+            <!-- SECTION Modal -->
+            <div id="modal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button onclick="toggleDialog()">
+                            <i class="feather" data-feather="x"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="title">SONG</div>
+                        <form onsubmit="event.preventDefault();" action="">
+                            <div class="inputGroup">
+                                <div class="left">
+                                    <p>Name:</p>
+                                </div>
+                                <div class="right">
+                                    <input
+                                        type="text"
+                                        id="songName"
+                                        placeholder="Song Name..."
+                                    />
+                                </div>
+                            </div>
+                            <div class="inputGroup">
+                                <div class="left">
+                                    <p>SongLink:</p>
+                                </div>
+                                <div class="right">
+                                    <input
+                                        type="text"
+                                        id="songLink"
+                                        placeholder="Song Link..."
+                                    />
+                                </div>
+                            </div>
+                            <div class="inputGroup">
+                                <div class="left">
+                                    <p>Duration:</p>
+                                </div>
+                                <div class="right">
+                                    <input
+                                        type="text"
+                                        id="songDuration"
+                                        placeholder="Song Duration..."
+                                    />
+                                </div>
+                            </div>
+                            <div class="inputGroup">
+                                <div class="left">
+                                    <p>Artist:</p>
+                                </div>
+                                <div class="right">
+                                    <select name="artist" id="songArtist">
+                                        <% if(locals.artists) { %> <%
+                                        artists.forEach(function(artist){ %>
+                                        <option value="<%= artist._id; %>">
+                                            <%= artist.name; %>
+                                        </option>
+                                        <% }) %> <% } else {%>
+                                        <option value="0">
+                                            No Artists Found
+                                        </option>
+                                        <% } %>
+                                    </select>
+                                </div>
+                            </div>
+                            <button
+                                data-id="<%= movie._id; %>"
+                                id="saveBtn"
+                                onclick=""
+                            >
+                                <p>Save</p>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- !SECTION Modal -->
+
+            <!-- SECION Audio Player -->
+                <audio id="audioPlayer" src="" style="display: none;"></audio>
+            <!-- !SECTION Audio Player-->
         </div>
-        <!-- !SECTION Modal -->
-    </div>
 
-    <script>
-        <% if (locals.error) { %>
-        alert("Something went wrong")
-        window.location.href = "/admin/movies"
-        <% } %>
-        feather.replace();
+        <script>
+            <% if (locals.error) { %>
+            alert("Something went wrong")
+            window.location.href = "/admin/movies"
+            <% } %>
+            feather.replace();
 
-        function openNewSongModal() {
-            toggleDialog();
-            document.getElementById("songName").value = "";
-            document.getElementById("songLink").value = "";
-            document.getElementById("songDuration").value = "";
-            document
-                .getElementById("saveBtn")
-                .setAttribute("onclick", "createSong()");
-        }
-
-        // SECTION Toggle Dialog
-        function toggleDialog() {
-            if (
-                document.getElementById("modal").style.display == "none" ||
-                document.getElementById("modal").style.display == ""
-            ) {
-                document.getElementById("modal").style.display = "flex";
-                $('#artists').css('overflow', 'hidden');
-            } else {
-                document.getElementById("modal").style.display = "none";
-                $('#artists').css('overflow', 'auto');
-                $('#moviePoster').attr('src', '/images/notfound.png');
+            // SECTION play function
+            function play(ele, url){
+                $('#audioPlayer').attr('src', url)
+                document.getElementById('audioPlayer').play();
+                $(ele).attr('onclick', 'pause(this)')
+                $(ele).children(".feather").replaceWith(feather.icons['pause'].toSvg())
             }
-        }
-        // !SECTION Toggle Dialog
-
-
-        // SECTION Create new movie
-        async function createSong() {
-            var data = {
-                name: document.getElementById("songName").value,
-                link: document.getElementById("songLink").value,
-                duration: document.getElementById("songDuration").value,
-                artist: document.getElementById("songArtist").value,
-                movie: $('#saveBtn').attr('data-id'),
-                method: "new"
+            function pause(ele){
+                document.getElementById('audioPlayer').pause();
+                $(ele).attr('onclick', 'resume(this)')
+                $(ele).children(".feather").replaceWith(feather.icons['play'].toSvg())
             }
-            if (await checkSongData(data) == false) {
-                alert("Check details!")
-                return;
-            } else {
-                $.post('/admin/songs', data, function(response) {
-                    if (response.status == true) {
-                        location.reload();
-                    } else {
-                        if (response.error == 'logout!') {
-                            console.log('Logout') //TODO call logout
+            function resume(ele){
+                document.getElementById('audioPlayer').play();
+                $(ele).attr('onclick', 'pause(this)')
+                $(ele).children(".feather").replaceWith(feather.icons['pause'].toSvg())
+            }
+            // !SECTION play function
+
+            function openNewSongModal() {
+                toggleDialog();
+                document.getElementById("songName").value = "";
+                document.getElementById("songLink").value = "";
+                document.getElementById("songDuration").value = "";
+                document
+                    .getElementById("saveBtn")
+                    .setAttribute("onclick", "createSong()");
+            }
+
+            // SECTION Toggle Dialog
+            function toggleDialog() {
+                if (
+                    document.getElementById("modal").style.display == "none" ||
+                    document.getElementById("modal").style.display == ""
+                ) {
+                    document.getElementById("modal").style.display = "flex";
+                    $('#artists').css('overflow', 'hidden');
+                } else {
+                    document.getElementById("modal").style.display = "none";
+                    $('#artists').css('overflow', 'auto');
+                    $('#moviePoster').attr('src', '/images/notfound.png');
+                }
+            }
+            // !SECTION Toggle Dialog
+
+
+            // SECTION Create new movie
+            async function createSong() {
+                var data = {
+                    name: document.getElementById("songName").value,
+                    link: document.getElementById("songLink").value,
+                    duration: document.getElementById("songDuration").value,
+                    artist: document.getElementById("songArtist").value,
+                    movie: $('#saveBtn').attr('data-id'),
+                    method: "new"
+                }
+                if (await checkSongData(data) == false) {
+                    alert("Check details!")
+                    return;
+                } else {
+                    $.post('/admin/songs', data, function(response) {
+                        if (response.status == true) {
+                            location.reload();
                         } else {
-                            alert(response.error)
+                            if (response.error == 'logout!') {
+                                console.log('Logout') //TODO call logout
+                            } else {
+                                alert(response.error)
+                            }
                         }
-                    }
-                });
+                    });
+                }
             }
-        }
-        // !SECTION Create new movie
+            // !SECTION Create new movie
 
-        // SECTION Checking movie Data
-        function checkSongData(data) {
-            if (data.name == "" ||
-                data.link == "" ||
-                data.duration == "" ||
-                data.artist == "") {
-                return false
-            } else {
-                return true
+            // SECTION Checking movie Data
+            function checkSongData(data) {
+                if (data.name == "" ||
+                    data.link == "" ||
+                    data.duration == "" ||
+                    data.artist == "") {
+                    return false
+                } else {
+                    return true
+                }
             }
-        }
-        // !SECTION Checking movie Data
-    </script>
-</body>
-
+            // !SECTION Checking movie Data
+        </script>
+    </body>
 </html>

@@ -52,6 +52,76 @@
     }
     .songsDetailsTab{
         padding: 10px 25px;
+        .songs{
+            margin-top: 20px;
+            display: flex;
+            .song{
+                background-color: rgba(0, 0, 0, 0.185);
+                padding: 15px;
+                position: relative;
+                width: 150px;
+                .songHeader{
+                    position: relative;
+                    display: flex;
+                    justify-content: center;
+                    img{
+                        width: 100px;
+                        height: 100px;
+                        border-radius: 50%;
+                        object-fit: cover;
+                    }
+                    div{
+                        position: absolute;
+                        width: 100px;
+                        height: 100px;
+                        left: 0%;
+                        top: 0%;
+                        background-color: #0000008f;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        cursor: pointer;
+                        left: 50%;
+                        transform: translate(-50%);
+                    }
+                }
+                .songContent{
+                    word-wrap: break-word;
+                    .name{
+                        font-size: 14px;
+                        color: white;
+                        text-align: center;
+                    }
+                    .duration{
+                        font-size: 10px;
+                        color: rgb(187, 187, 187);
+                        text-align: center;
+                    }
+                    .artist{
+                        font-size: 12px;
+                        color: rgb(180, 180, 180);
+                        text-align: center;
+                    }
+                }
+                .menuitems{
+                    display: flex;
+                    display: flex;
+                    align-items: center;
+                    padding: 5px;
+                    justify-content: center;
+                    div{
+                        display: flex;
+                        align-items: center;
+                        .feather{
+                            cursor: pointer;
+                            width: 15px;
+                            margin-left: 5px;
+                        }
+                    }
+                }
+            }
+        }
     }
     .modal{
         form{

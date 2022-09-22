@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 
 const songSchema = new mongoose.Schema({
     name: String,
-    artist: String,
-    movie: String,
+    artist: { type: mongoose.Schema.Types.ObjectId, ref: 'artists'},
+    movie: { type: mongoose.Schema.Types.ObjectId, ref: 'movies'},
     duration: Number,
     link: String,
 })

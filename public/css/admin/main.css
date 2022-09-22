@@ -373,6 +373,64 @@
 
 .movieDetails .songsDetailsTab {
   padding: 10px 25px; }
+  .movieDetails .songsDetailsTab .songs {
+    margin-top: 20px;
+    display: flex; }
+    .movieDetails .songsDetailsTab .songs .song {
+      background-color: rgba(0, 0, 0, 0.185);
+      padding: 15px;
+      position: relative;
+      width: 150px; }
+      .movieDetails .songsDetailsTab .songs .song .songHeader {
+        position: relative;
+        display: flex;
+        justify-content: center; }
+        .movieDetails .songsDetailsTab .songs .song .songHeader img {
+          width: 100px;
+          height: 100px;
+          border-radius: 50%;
+          object-fit: cover; }
+        .movieDetails .songsDetailsTab .songs .song .songHeader div {
+          position: absolute;
+          width: 100px;
+          height: 100px;
+          left: 0%;
+          top: 0%;
+          background-color: #0000008f;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          left: 50%;
+          transform: translate(-50%); }
+      .movieDetails .songsDetailsTab .songs .song .songContent {
+        word-wrap: break-word; }
+        .movieDetails .songsDetailsTab .songs .song .songContent .name {
+          font-size: 14px;
+          color: white;
+          text-align: center; }
+        .movieDetails .songsDetailsTab .songs .song .songContent .duration {
+          font-size: 10px;
+          color: #bbbbbb;
+          text-align: center; }
+        .movieDetails .songsDetailsTab .songs .song .songContent .artist {
+          font-size: 12px;
+          color: #b4b4b4;
+          text-align: center; }
+      .movieDetails .songsDetailsTab .songs .song .menuitems {
+        display: flex;
+        display: flex;
+        align-items: center;
+        padding: 5px;
+        justify-content: center; }
+        .movieDetails .songsDetailsTab .songs .song .menuitems div {
+          display: flex;
+          align-items: center; }
+          .movieDetails .songsDetailsTab .songs .song .menuitems div .feather {
+            cursor: pointer;
+            width: 15px;
+            margin-left: 5px; }
 
 .movieDetails .modal form select {
   padding: 5px;

@@ -93,28 +93,22 @@ module.exports.deleteSong = (movieId, callback) => {
 
 // SECTION Read song by movieID
 module.exports.getSongsByMovieID = (movieId, callback) => {
-    songModel.find({ movie: movieId }, (err, songs) => {
-        if (err) {
+    songsModel.find({ movie: movieId }).
+    populate('artist').
+    exec(function (err, songs) {
+        if(err){
+            console.log(err.message)
             callback({
                 status: false,
                 message: "DB error: " + err.message,
-            });
+            })
         } else {
-            const temp = new Promise((resolve, reject) => {
-                for(let i=0; i<songs.length; i++){
-                    getArtistNameById(songs[i].artist, (artistName) => {
-                        songs[i].artist = artistName;
-                    });
-                    if(i == songs.length - 1) resolve()
-                }
-            });
-            temp.then(() => {
-                callback({
-                    status: true,
-                    data: songs,
-                });
+            console.log(songs)
+            callback({
+                status: true,
+                data: songs
             });
         }
-    });
+    })
 };
 // !SECTION Read song by movieID

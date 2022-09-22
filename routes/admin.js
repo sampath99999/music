@@ -247,7 +247,7 @@ router.get("/movies/:movieid", (req, res) => {
         if (response == true) {
             readMovieById(req.params.movieid, (movie) => {
                 getSongsByMovieID(req.params.movieid, songs => {
-                    if (movie.status == false) {
+                    if (songs.status == false) {
                         res.render("admin/movieDetails", { error: true });
                     } else {
                         getArtistsList().then((artists) => {
