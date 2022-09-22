@@ -9,6 +9,7 @@ const {
     deleteArtist,
     editArtist,
 } = require("../controllers/artists");
+const { readMovies, createMovie, deleteMovie } = require("../controllers/movies");
 
 router.get("/", (req, res) => {
     const session = req.session;
@@ -143,6 +144,93 @@ router.post("/artists", (req, res) => {
         }
     });
 });
+
+router.get("/movies", (req, res) => {
+    const session = req.session;
+    this.checkIfAdminIsReal(session, (response) => {
+        if (response == true) {
+            readMovies((movies) => {
+                res.render("admin/movies", { movies: movies.data });
+            });
+        } else {
+            res.redirect("/admin");
+        }
+    });
+});
+
+// SECTION Movies Post
+router.post("/movies", (req, res) => {
+    const session = req.session;
+    this.checkIfAdminIsReal(session, (response) => {
+        if (response == true) {
+            const details = req.body;
+            if (details.method == "new") {
+                delete details.method;
+                createMovie(details, (createResponse) => {
+                    if (createResponse.status == true) {
+                        res.send({
+                            status: true,
+                        });
+                    } else {
+                        res.send({
+                            status: false,
+                            error: createResponse.message,
+                        });
+                    }
+                });
+            } else {
+                if (details.method == "delete") {
+                    deleteMovie(details.id, (deleteMovieResponse) => {
+                        if (deleteMovieResponse.status == true) {
+                            res.send({
+                                status: true,
+                            });
+                        } else {
+                            res.send({
+                                status: false,
+                                error: deleteMovieResponse.message,
+                            });
+                        }
+                    });
+                } else {
+                    if (details.method == "edit") {
+                        delete details.method;
+                        if (
+                            details.name == "" ||
+                            details.cover == "" ||
+                            details.about == "" ||
+                            details.id == ""
+                        ) {
+                            res.send({
+                                status: false,
+                                error: "All Details Required!",
+                            });
+                        } else {
+                            const id = details.id;
+                            delete details.id;
+                            editArtist(id, details, (editArtistResponse) => {
+                                if (editArtistResponse.status == true) {
+                                    res.send({ status: true });
+                                } else {
+                                    res.send({
+                                        status: false,
+                                        error: editArtistResponse.message,
+                                    });
+                                }
+                            });
+                        }
+                    }
+                }
+            }
+        } else {
+            res.send({
+                status: false,
+                error: "logout!",
+            });
+        }
+    });
+});
+// !SECTION Movies Post
 
 module.exports.checkIfAdminIsReal = (session, callback) => {
     if (session.loggedIn == true) {

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artists || Dashboard || Sangeetham</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <link rel="stylesheet" href="/css/admin/main.css" />
+</head>
+
+<body class="dashboard movies artists">
+    <%- include('./sidebar', {page_name: 'movies' }); %>
+    <div class="content">
+        <%- include('./header'); %>
+
+        <!-- SECTION Top Bar -->
+        <div class="topbar">
+            <div class="title">MOVIES</div>
+            <div class="buttonsGroup">
+                <button onclick="openNewMovieModal()">
+                    <i class="feather" data-feather="plus"></i>
+                    <p class="smallText">Add New Movie</p>
+                </button>
+            </div>
+        </div>
+        <!-- !SECTION Top Bar -->
+
+        <!-- SECTION Table -->
+        <div class="artists">
+            <% movies.forEach(function(movie){ %>
+            <div class="artist">
+                <img src="<%= movie.cover; %>" />
+                <p  onclick="window.location.href = '/admin/movies/<%= movie._id; %>'" class="title">
+                    <%= movie.name; %>
+                </p>
+                <p class="about">
+                    <%= movie.about; %>
+                </p>
+                <div class="buttonsgroup">
+                    <div data-name="<%= movie.name; %>" data-id="<%= movie._id; %>" data-about="<%= movie.about; %>" data-cover="<%=
+                        movie.cover; %>" class="edit" onclick="window.location.href = '/admin/movies/<%= movie._id; %>'">
+                        <i class="feather" data-feather="eye"></i>
+                    </div>
+                    <div data-id="<%= movie._id; %>" onclick="deleteMovie(this);" class="delete">
+                        <i class="feather" data-feather="trash"></i>
+                    </div>
+                </div>
+            </div>
+            <% }); %>
+
+
+
+        </div>
+        <!-- !SECTION Table -->
+
+
+        <!-- SECTION Modal -->
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <img id="moviePoster" onerror="if (this.src != '/images/notfound.png') this.src = '/images/notfound.png';" src="/images/notfound.png" alt="" />
+                    <button onclick="toggleDialog()">
+                        <i class="feather" data-feather="x"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="title">MOVIE</div>
+                    <form onsubmit="event.preventDefault();" action="">
+                        <div class="inputGroup">
+                            <div class="left">
+                                <p>Name:</p>
+                            </div>
+                            <div class="right">
+                                <input type="text" id="movieName" placeholder="Movie Name..." />
+                            </div>
+                        </div>
+                        <div class="inputGroup">
+                            <div class="left">
+                                <p>Cover:</p>
+                            </div>
+                            <div class="right">
+                                <input type="text" onchange='document.getElementById("moviePoster").src = this.value' id="movieCover" placeholder="Movie Cover..." />
+                            </div>
+                        </div>
+                        <div class="inputGroup">
+                            <div class="left">
+                                <p>About:</p>
+                            </div>
+                            <div class="right">
+                                <input type="text" value="Hello" id="movieAbout" placeholder="About Movie..." />
+                            </div>
+                        </div>
+                        <div class="inputGroup">
+                            <div class="left">
+                                <p>Rating:</p>
+                            </div>
+                            <div class="right">
+                                <input type="number" id="movieRating" placeholder="Movie Rating..." min="0" max="5" />
+                            </div>
+                        </div>
+                        <div class="inputGroup">
+                            <div class="left">
+                                <p>Year of Release:</p>
+                            </div>
+                            <div class="right">
+                                <input type="number" id="movieReleaseYear" placeholder="Movie Release Year..." />
+                            </div>
+                        </div>
+                        <button id="saveBtn" onclick="">
+                            <p>Save</p>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- !SECTION Modal -->
+
+    </div>
+    </div>
+
+    <!--SECTION Script -->
+    <script>
+        feather.replace();
+
+        // SECTION open modal for new movie
+        function openNewMovieModal() {
+            toggleDialog();
+            document.getElementById("movieName").value = "";
+            document.getElementById("movieAbout").value = "";
+            document.getElementById("movieCover").value = "";
+            document.getElementById("movieReleaseYear").value = "";
+            document.getElementById("movieRating").value = "";
+            document
+                .getElementById("saveBtn")
+                .setAttribute("onclick", "createMovie()");
+        }
+        // !SECTION open modal for new movie
+
+
+        // SECTION Toggle Dialog
+        function toggleDialog() {
+            if (
+                document.getElementById("modal").style.display == "none" ||
+                document.getElementById("modal").style.display == ""
+            ) {
+                document.getElementById("modal").style.display = "flex";
+                $('#artists').css('overflow', 'hidden');
+            } else {
+                document.getElementById("modal").style.display = "none";
+                $('#artists').css('overflow', 'auto');
+                $('#moviePoster').attr('src', '/images/notfound.png');
+            }
+        }
+        // !SECTION Toggle Dialog
+
+
+
+        // SECTION Create new movie
+        async function createMovie() {
+            var data = {
+                name: document.getElementById("movieName").value,
+                about: document.getElementById("movieAbout").value,
+                cover: document.getElementById("movieCover").value,
+                year: document.getElementById("movieReleaseYear").value,
+                rating: document.getElementById("movieRating").value,
+                method: "new"
+            }
+            if (await checkMovieData(data) == false) {
+                alert("Check details!")
+                return;
+            } else {
+                $.post('/admin/movies', data, function(response) {
+                    if (response.status == true) {
+                        location.reload();
+                    } else {
+                        if (response.error == 'logout!') {
+                            console.log('Logout') //TODO call logout
+                        } else {
+                            alert(response.error)
+                        }
+                    }
+                });
+            }
+        }
+        // !SECTION Create new movie
+
+        // SECTION Checking movie Data
+        async function checkMovieData(data) {
+            if (data.name == "" ||
+                data.cover == "" ||
+                data.about == "" ||
+                data.year == "" ||
+                data.rating == "") {
+                return false
+            } else {
+                return await checkImage(data.cover)
+            }
+        }
+        // !SECTION Checking movie Data
+
+
+        // SECTION check if image is realPath
+        async function checkImage(url) {
+
+            const res = await fetch(url);
+            const buff = await res.blob();
+
+            return buff.type.startsWith('image/')
+
+        }
+        // !SECTION check if image is realPath
+
+        // SECTION Delete Movie
+        function deleteMovie(ele) {
+            const data = {
+                id: $(ele).attr('data-id'),
+                method: "delete"
+            }
+            $.post('/admin/movies', data, function(response) {
+                if(!confirm('Are you sure you want to delete this movie?')) return
+                if (response.status == true) {
+                    location.reload();
+                } else {
+                    if (response.error == 'logout!') {
+                        console.log('Logout') //TODO call logout
+                    } else {
+                        alert(response.error)
+                    }
+                }
+            });
+        }
+        // !SECTION Delete Movie
+    </script>
+</body>
+
+</html>

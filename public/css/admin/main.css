@@ -287,7 +287,7 @@
       display: flex;
       align-items: center;
       justify-content: center; }
-      .artists .modal .modal-content .modal-header #artistImageEle {
+      .artists .modal .modal-content .modal-header img {
         width: 150px;
         height: 150px;
         object-fit: cover;
@@ -329,6 +329,9 @@
       color: white;
       cursor: pointer;
       border-radius: 30px; }
+
+.movies .content .artists .artist .title {
+  cursor: pointer; }
 
 * {
   font-family: 'Poppins', sans-serif;

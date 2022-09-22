@@ -7,13 +7,13 @@ module.exports.createMovie = (movieDetails, callback) => {
     movie.save()
         .then((result) => {
             callback({
-                status: "success",
+                status: true,
                 data: result
             })
         })
         .catch((err) => {
             callback({
-                status: "error",
+                status: false,
                 message: "DB Error: " + err.message
             })
         })
@@ -25,12 +25,12 @@ module.exports.readMovieById = (movieId, callback) => {
     movieModel.findOne({ _id: movieId }, (err, movie) => {
         if (err) {
             callback({
-                status: "error",
+                status: false,
                 message: "DB Error: " + err.message
             })
         }
         callback({
-            status: "success",
+            status: true,
             data: movie
         })
     })
@@ -42,12 +42,12 @@ module.exports.readMovies = (callback) => {
     movieModel.find({}, (err, movies) => {
         if (err) {
             callback({
-                status: "error",
+                status: false,
                 message: "DB Error: " + err.message
             })
         }
         callback({
-            status: "success",
+            status: true,
             data: movies
         })
     })
@@ -59,12 +59,12 @@ module.exports.updateMovie = (movieId, movie, callback) => {
     movieModel.findOneAndUpdate({ _id: movieId }, movie, (err, movie) => {
         if (err) {
             callback({
-                status: "error",
+                status: false,
                 message: "DB Error: " + err.message
             })
         }
         callback({
-            status: "success",
+            status: true,
             message: "Movie Updated!"
         })
     })
@@ -76,12 +76,12 @@ module.exports.deleteMovie = (movieId, callback) => {
     movieModel.deleteOne({ _id: movieId }, {}, (err) => {
         if (err) {
             callback({
-                status: "error",
+                status: false,
                 message: "DB Error: " + err.message
             })
         }
         callback({
-            status: "success",
+            status: true,
             message: "Movie deleted successfully!"
         })
     })
