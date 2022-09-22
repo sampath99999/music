@@ -8,8 +8,16 @@ const {
     createArtist,
     deleteArtist,
     editArtist,
+    getArtistsList,
 } = require("../controllers/artists");
-const { readMovies, createMovie, deleteMovie } = require("../controllers/movies");
+const {
+    readMovies,
+    createMovie,
+    deleteMovie,
+    readMovieById,
+} = require("../controllers/movies");
+const { createSong, getSongsByMovieID } = require("../controllers/songs");
+const { response } = require("express");
 
 router.get("/", (req, res) => {
     const session = req.session;
@@ -231,6 +239,73 @@ router.post("/movies", (req, res) => {
     });
 });
 // !SECTION Movies Post
+
+// SECTION Movie Detail page
+router.get("/movies/:movieid", (req, res) => {
+    const session = req.session;
+    this.checkIfAdminIsReal(session, (response) => {
+        if (response == true) {
+            readMovieById(req.params.movieid, (movie) => {
+                getSongsByMovieID(req.params.movieid, songs => {
+                    if (movie.status == false) {
+                        res.render("admin/movieDetails", { error: true });
+                    } else {
+                        getArtistsList().then((artists) => {
+                            res.render("admin/movieDetails", {
+                                movie: movie.data,
+                                artists: artists.data,
+                                songs: songs.data
+                            });
+                        });
+                    }
+                })
+            });
+        } else {
+            // res.redirect("/admin/logout")
+            console.log("logout"); // TODO logout
+        }
+    });
+});
+// !SECTION Movie Detail page
+
+// SECTION get Aritsts List
+router.get("/getArtistsList", (req, res) => {
+    getArtistsList().then((response) => {
+        res.send(response);
+    });
+});
+// !SECTION get Aritsts Lis
+
+// SECTION Songs
+router.post("/songs", (req, res) => {
+    const session = req.session;
+    this.checkIfAdminIsReal(session, (response) => {
+        if (response == true) {
+            const details = req.body;
+            if (details.method == "new") {
+                delete details.method;
+                createSong(details, (createResponse) => {
+                    if (createResponse.status == true) {
+                        res.send({
+                            status: true,
+                        });
+                    } else {
+                        res.send({
+                            status: false,
+                            error: createResponse.message,
+                        });
+                    }
+                });
+            }
+        } else {
+            res.send({
+                status: false,
+                error: "logout!",
+            });
+        }
+    });
+});
+// !SECTION Songs
 
 module.exports.checkIfAdminIsReal = (session, callback) => {
     if (session.loggedIn == true) {

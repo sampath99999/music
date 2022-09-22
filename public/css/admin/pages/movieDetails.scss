@@ -1,0 +1,71 @@
+.movieDetails {
+    .detailsTab {
+        padding: 25px;
+        display: flex;
+        .left {
+            img {
+                max-width: 250px;
+                max-height: 250px;
+                object-fit: cover;
+            }
+        }
+        .right {
+            padding-left: 50px;
+            .title {
+                font-size: 25px;
+            }
+            .about {
+                font-size: 14px;
+                color: rgb(180, 180, 180);
+            }
+            .rating {
+                margin-top: 25px;
+                span {
+                    color: yellow;
+                    margin-left: 5px;
+                }
+            }
+            .buttons {
+                margin-top: 30px;
+                display: flex;
+                button {
+                    display: flex;
+                    align-items: center;
+                    padding: 10px;
+                    border-radius: 48px;
+                    border: none;
+                    cursor: pointer;
+                    background-color: #629677;
+                    color: white;
+                    margin-right: 15px;
+                    .feather {
+                        width: 20px;
+                        height: 20px;
+                        // margin-right: 10px;
+                    }
+                }
+                .deleteBtn{
+                    background-color: #975151;
+                }
+            }
+        }
+    }
+    .songsDetailsTab{
+        padding: 10px 25px;
+    }
+    .modal{
+        form{
+            select{
+                padding: 5px;
+                font-size: 14px;
+                background-color: transparent;
+                color: white;
+                border: none;
+                border-bottom: solid 1px white;
+                option{
+                    color: black;
+                }
+            }
+        }
+    }
+}

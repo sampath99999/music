@@ -98,3 +98,32 @@ module.exports.getArtists = (callback) => {
     });
 };
 //!SECTION get artists
+
+//SECTION get artists list
+module.exports.getArtistsList = () => {
+    return new Promise((resolve, reject) => {
+        artistModel.find({}, ["name"], (err, artists) => {
+            if (err) {
+                resolve({
+                    status: false,
+                    message: "DB Error:" + err.message,
+                });
+            } else {
+                resolve({
+                    status: true,
+                    data: artists,
+                });
+            }
+        });
+    })
+    
+};
+//!SECTION get artists list
+
+// SECTION get artist name by id
+module.exports.getArtistNameById = (artistid, callback) => {
+    artistModel.findOne({_id: artistid}, (err, artist) => {
+        callback(artist.name)
+    })
+}
+// !SECTION get artist name by id

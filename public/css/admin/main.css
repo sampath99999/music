@@ -333,6 +333,57 @@
 .movies .content .artists .artist .title {
   cursor: pointer; }
 
+.movieDetails .detailsTab {
+  padding: 25px;
+  display: flex; }
+  .movieDetails .detailsTab .left img {
+    max-width: 250px;
+    max-height: 250px;
+    object-fit: cover; }
+  .movieDetails .detailsTab .right {
+    padding-left: 50px; }
+    .movieDetails .detailsTab .right .title {
+      font-size: 25px; }
+    .movieDetails .detailsTab .right .about {
+      font-size: 14px;
+      color: #b4b4b4; }
+    .movieDetails .detailsTab .right .rating {
+      margin-top: 25px; }
+      .movieDetails .detailsTab .right .rating span {
+        color: yellow;
+        margin-left: 5px; }
+    .movieDetails .detailsTab .right .buttons {
+      margin-top: 30px;
+      display: flex; }
+      .movieDetails .detailsTab .right .buttons button {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        border-radius: 48px;
+        border: none;
+        cursor: pointer;
+        background-color: #629677;
+        color: white;
+        margin-right: 15px; }
+        .movieDetails .detailsTab .right .buttons button .feather {
+          width: 20px;
+          height: 20px; }
+      .movieDetails .detailsTab .right .buttons .deleteBtn {
+        background-color: #975151; }
+
+.movieDetails .songsDetailsTab {
+  padding: 10px 25px; }
+
+.movieDetails .modal form select {
+  padding: 5px;
+  font-size: 14px;
+  background-color: transparent;
+  color: white;
+  border: none;
+  border-bottom: solid 1px white; }
+  .movieDetails .modal form select option {
+    color: black; }
+
 * {
   font-family: 'Poppins', sans-serif;
   margin: 0;

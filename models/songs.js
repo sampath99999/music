@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 
 const songSchema = new mongoose.Schema({
-    title: String,
+    name: String,
     artist: String,
-    album: String,
+    movie: String,
     duration: Number,
-    songLink: String,
+    link: String,
 })
 
 const songModel = mongoose.model('songs', songSchema)
