@@ -35,7 +35,7 @@
             <% movies.forEach(function(movie){ %>
             <div class="artist">
                 <img src="<%= movie.cover; %>" />
-                <p  onclick="window.location.href = '/admin/movies/<%= movie._id; %>'" class="title">
+                <p onclick="window.location.href = '/admin/movies/<%= movie._id; %>'" class="title">
                     <%= movie.name; %>
                 </p>
                 <p class="about">
@@ -217,12 +217,12 @@
 
         // SECTION Delete Movie
         function deleteMovie(ele) {
+            if (!confirm('Are you sure you want to delete this movie?')) return
             const data = {
                 id: $(ele).attr('data-id'),
                 method: "delete"
             }
             $.post('/admin/movies', data, function(response) {
-                if(!confirm('Are you sure you want to delete this movie?')) return
                 if (response.status == true) {
                     location.reload();
                 } else {
@@ -235,6 +235,7 @@
             });
         }
         // !SECTION Delete Movie
+
     </script>
 </body>
 
